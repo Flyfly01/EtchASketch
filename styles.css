@@ -2,10 +2,9 @@
   display: flex;
   margin: 100px auto;
   background-color: white;
-  border: 1px solid black;
   flex-wrap: wrap;
 }
 
 .cell {
-  border: 1px solid whitesmoke;
+  border: 1px solid grey;
 }
