@@ -1,5 +1,5 @@
 const gridSize = 600;
-let squaresPerSide = 16;
+let squaresPerSide = 32;
 
 const board = document.querySelector("#board");
 board.style.width = board.style.height = `${gridSize}px`;
@@ -8,7 +8,7 @@ function changeBackgroundColour() {
   this.style.backgroundColor = "black";
 }
 
-function createGridCells () {
+function createGridCells() {
   const totalAmtOfSquares = squaresPerSide*squaresPerSide;
   const widthOrHeight = `${(gridSize / squaresPerSide)}px`;
   
@@ -25,3 +25,23 @@ function createGridCells () {
 }
 
 createGridCells();
+
+let message = document.querySelector("#message");
+
+function getSize(){
+  let input = prompt("Please enter squares per side");
+  if (input === "") {
+    message.textContent = "Please enter a number";
+  } else if (input < 0 || input > 100) {
+    message.textContent = "Please enter a number between 1 and 100";
+  } else {
+    message.textContent = "Now you can play";
+    return input;
+  }
+}
+
+let popupbtn = document.querySelector("#popup");
+popupbtn.addEventListener("click", function() {
+  squaresPerSide = getSize()
+  createGridCells();
+})
