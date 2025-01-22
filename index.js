@@ -28,8 +28,8 @@ createGridCells();
 
 let message = document.querySelector("#message");
 
-function getSize(){
-  let input = prompt("Please enter squares per side");
+/*function getSize(){
+  let input = Number(prompt("Please enter squares per side"));
   if (input === "") {
     message.textContent = "Please enter a number";
   } else if (input < 0 || input > 100) {
@@ -43,5 +43,21 @@ function getSize(){
 let popupbtn = document.querySelector("#popup");
 popupbtn.addEventListener("click", function() {
   squaresPerSide = getSize()
+  createGridCells();
+}) */
+
+const resetButton = document.querySelector("#popup")
+resetButton.addEventListener("click", () => {
+  let userSize = Number(prompt("Please choose grid dimensions"));
+
+  if (userSize ==="") {
+    message.textContent = "Please enter a number";
+  } else if (userSize < 0 || userSize > 100) {
+    message.textContent = "Please enter a number between 1 and 100";
+  } else {
+    message.textContent = "Now you can play";
+  }
+
+  squaresPerSide = userSize;
   createGridCells();
 })
