@@ -1,20 +1,26 @@
 const gridSize = 600;
-let rows = 16;
-let columns = 16;
+let squaresPerSide = 16;
 
 const board = document.querySelector("#board");
-board.style.width = `${gridSize}px`;
-board.style.height = `${gridSize}px`;
+board.style.width = board.style.height = `${gridSize}px`;
+
+function changeBackgroundColour() {
+  this.style.backgroundColor = "black";
+}
 
 function createGridCells () {
-  for (i=0; i < rows*columns; i++) {
+  const totalAmtOfSquares = squaresPerSide*squaresPerSide;
+  const widthOrHeight = `${(gridSize / squaresPerSide) - 2}px`;
+  
+  for (i=0; i < totalAmtOfSquares; i++) {
     const gridCell = document.createElement("div");
 
-    gridCell.style.width = `${(gridSize / columns) - 2}px`;
-    gridCell.style.height = `${(gridSize / rows) - 2}px`;
+    gridCell.style.width = gridCell.style.height = widthOrHeight;
     gridCell.classList.add("cell");
 
     board.appendChild(gridCell);
+
+    gridCell.addEventListener ("mouseover", changeBackgroundColour);
   }
 }
 
