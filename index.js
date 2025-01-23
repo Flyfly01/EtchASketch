@@ -1,14 +1,10 @@
 const gridSize = 600;
 let squaresPerSide = 32;
+let currentColour = "black";
 
-/*const board = document.querySelector("#board");
-board.style.width = board.style.height = `${gridSize}px`;*/
 
 const containers = document.querySelector(".containers");
 
-function changeBackgroundColour() {
-  this.style.backgroundColor = "black";
-}
 
 function createGridCells() {
   const oldBoard = document.querySelector("#board");
@@ -25,13 +21,12 @@ function createGridCells() {
   const totalAmtOfSquares = squaresPerSide*squaresPerSide;
   const widthOrHeight = `${(gridSize / squaresPerSide)}px`;
   
-  for (i=0; i < totalAmtOfSquares; i++) {
+  for (let i=0; i < totalAmtOfSquares; i++) {
     const gridCell = document.createElement("div");
 
     gridCell.style.width = gridCell.style.height = widthOrHeight;
     gridCell.classList.add("cell");
 
-    //board.appendChild(gridCell);
     newBoard.appendChild(gridCell);
 
     gridCell.addEventListener ("mouseover", changeBackgroundColour);
@@ -39,6 +34,17 @@ function createGridCells() {
 }
 
 createGridCells();
+
+function changeBackgroundColour () {
+  console.log("Current colour:", currentColour);
+  if (currentColour === "black") {
+    this.style.backgroundColor = "black";
+  } else if (currentColour === "random") {
+    const randomColour = `#${Math.floor(Math.random()*16777215).toString(16)}`;
+    console.log("Random Colour Generated:", randomColour)
+    this.style.backgroundColor = randomColour;
+  }
+}
 
 let message = document.querySelector("#message");
 
@@ -54,8 +60,11 @@ resetButton.addEventListener("click", () => {
     message.textContent = "Now you can play";
   }
 
- 
-
   squaresPerSide = userSize;
   createGridCells();
 })
+
+
+
+
+
