@@ -1,6 +1,6 @@
 #board {
   display: flex;
-  margin: 100px auto;
+  margin: 25px auto;
   background-color: white;
   flex-wrap: wrap;
   /* Had to add width because after fixing old/new board issue, the grid ran horizontally (rectangle) and not vertically (square). This flex-wrap property ensured that the .cell elements formed rows that strictyly fit within the width of the board*/
@@ -14,9 +14,9 @@
 
 body {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
 }
 
 .header {
@@ -41,4 +41,9 @@ p {
   width: 500px;
   align-items: center;
   margin-bottom: 50px;
+}
+
+h1 {
+  padding-top: 30px;
+  margin-bottom: 0px;
 }
