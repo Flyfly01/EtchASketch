@@ -9,3 +9,34 @@
   border: 1px solid whitesmoke;
   box-sizing: border-box;
 }
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 700px;
+  justify-content: space-around;
+  margin-top: 40px;
+}
+
+p {
+  display: flex;
+  padding: 20px;
+  margin-bottom: 0px;
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 500px;
+  align-items: center;
+  margin-bottom: 50px;
+}
