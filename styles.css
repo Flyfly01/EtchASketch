@@ -3,6 +3,8 @@
   margin: 100px auto;
   background-color: white;
   flex-wrap: wrap;
+  /* Had to add width because after fixing old/new board issue, the grid ran horizontally (rectangle) and not vertically (square). This flex-wrap property ensured that the .cell elements formed rows that strictyly fit within the width of the board*/
+  width: 600px;
 }
 
 .cell {

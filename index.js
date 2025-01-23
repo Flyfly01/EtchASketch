@@ -1,14 +1,27 @@
 const gridSize = 600;
 let squaresPerSide = 32;
 
-const board = document.querySelector("#board");
-board.style.width = board.style.height = `${gridSize}px`;
+/*const board = document.querySelector("#board");
+board.style.width = board.style.height = `${gridSize}px`;*/
+
+const containers = document.querySelector(".containers");
 
 function changeBackgroundColour() {
   this.style.backgroundColor = "black";
 }
 
 function createGridCells() {
+  const oldBoard = document.querySelector("#board");
+  if (oldBoard) {
+    oldBoard.remove();
+  }
+  
+  const newBoard = document.createElement("div");
+  newBoard.id = "board";
+  newBoard.style.width = newBoard.style.height = `${gridSize}`; 
+
+  containers.appendChild(newBoard);
+  
   const totalAmtOfSquares = squaresPerSide*squaresPerSide;
   const widthOrHeight = `${(gridSize / squaresPerSide)}px`;
   
@@ -18,7 +31,8 @@ function createGridCells() {
     gridCell.style.width = gridCell.style.height = widthOrHeight;
     gridCell.classList.add("cell");
 
-    board.appendChild(gridCell);
+    //board.appendChild(gridCell);
+    newBoard.appendChild(gridCell);
 
     gridCell.addEventListener ("mouseover", changeBackgroundColour);
   }
@@ -27,24 +41,6 @@ function createGridCells() {
 createGridCells();
 
 let message = document.querySelector("#message");
-
-/*function getSize(){
-  let input = Number(prompt("Please enter squares per side"));
-  if (input === "") {
-    message.textContent = "Please enter a number";
-  } else if (input < 0 || input > 100) {
-    message.textContent = "Please enter a number between 1 and 100";
-  } else {
-    message.textContent = "Now you can play";
-    return input;
-  }
-}
-
-let popupbtn = document.querySelector("#popup");
-popupbtn.addEventListener("click", function() {
-  squaresPerSide = getSize()
-  createGridCells();
-}) */
 
 const resetButton = document.querySelector("#popup")
 resetButton.addEventListener("click", () => {
@@ -57,6 +53,8 @@ resetButton.addEventListener("click", () => {
   } else {
     message.textContent = "Now you can play";
   }
+
+ 
 
   squaresPerSide = userSize;
   createGridCells();
